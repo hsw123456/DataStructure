@@ -1,5 +1,5 @@
 package com.hsw.datasturctor;
-
+import static java.lang.Math.*;
 /**
  * 一个模拟保存整数节点的二叉节点
  * 
@@ -8,9 +8,9 @@ package com.hsw.datasturctor;
  */
 public class BinaryIntNode {
 
-	private Integer element;
-	private BinaryIntNode left;// 左节点
-	private BinaryIntNode right;// 右节点
+	public Integer element;
+	public  BinaryIntNode left;// 左节点
+	public BinaryIntNode right;// 右节点
 
 	public int getElement() {
 		return element;
@@ -39,6 +39,9 @@ public class BinaryIntNode {
 	public BinaryIntNode(){
 		this(null, null, null);
 	}
+	public BinaryIntNode(Integer data){
+		this(data,null,null);
+	}
 	
 	public BinaryIntNode(Integer element, BinaryIntNode left, BinaryIntNode right) {
 		super();
@@ -53,8 +56,11 @@ public class BinaryIntNode {
 	 * @return
 	 */
 	public static int size(BinaryIntNode t){
-		
-		return 0;
+		if(t== null)
+			return 0;
+		else {
+			return 1 + size(t.left)+ size(t.right);
+		}
 	}
 	/**
 	 * 
@@ -62,7 +68,10 @@ public class BinaryIntNode {
 	 * @return：当前节点的高度：左右子树的最大高度+1-->Max(height(leftNode),height(rightNode))+1;
 	 */
 	public static int height(BinaryIntNode t){
-		return 0;
+		if(t == null)
+			return -1;
+		else
+			return 1+max(height(t.left), height(t.right));
 	}
 	
 	/**
